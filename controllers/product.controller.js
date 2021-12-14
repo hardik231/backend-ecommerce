@@ -42,18 +42,10 @@ exports.getProduct = (req, res) => {
 
 exports.getProducts = (req, res) => {
 
-    // pageSize = req.query.pageSize
-    // pageNumber = req.query.pageNumber
-    // productsQuery = Product.find({})
-
-    // if(pageSize && pageNumber) {
-    //     productsQuery.skip(pageSize * (pageNumber-1))
-    //     .limit(pageSize)
-    // }
-
     Product.find({}).sort({dateCreated:-1}).then((products) => {
-            if(products) {
-                   res.send(products)
+
+        if(products) {
+             res.send(products)
             }
         })
 }
@@ -80,7 +72,6 @@ exports.getProductsByCategory = (req, res) => {
                 }
                 
 )}
-
 
 
 exports.getAllProductsCategories = (req, res) => {
