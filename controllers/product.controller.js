@@ -6,7 +6,7 @@ exports.createProduct = (req, res) => {
         name: req.body.name,
         category: req.body.category,
         price: req.body.price,
-        description:     req.body.description,
+        description: req.body.description,
         unitsInStock: req.body.unitsInStock,
         imageUrl:  'uploads/' + req.file.originalname,
     })
@@ -117,6 +117,19 @@ exports.partialUpdate = (req, res) => {
     )
 }
 
+exports.updateStock = (req, res) => {
+    const productId = req.params.productId;
+    const update = {unitsInStock: req.body.unitsInStock}
+    Product.findByIdAndUpdate(productId, update, (err, product) => {
+            Product.find({_id: productId}).then(
+                response => {
+                    res.send(response)
+                }
+            ) 
+                
+        }
+    )
+}
 
 exports.deleteProduct = (req, res) => {
     
