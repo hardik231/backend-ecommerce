@@ -8,7 +8,7 @@ const productCategoryRouter = require('./routers/product-category.router')
 const stateRouter = require('./routers/states.router')
 const purchase = require('./routers/purchase.router')
 
-const PORT = 3000 | process.env.PORT
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 app.use('/uploads', express.static('./uploads'));
